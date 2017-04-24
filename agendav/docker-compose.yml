@@ -1,0 +1,35 @@
+version: '3'
+services:
+  agendav:
+    container_name: agendav
+    build:
+      context: ./agendav
+      args:
+        dbhost: $dbhost
+        dbport: $dbport
+        dbuser: $dbuser
+        dbpassword: $dbpassword
+        dbname: $dbname
+        domainname: $domainname
+        TIMEZONE: $TIMEZONE
+    # These capabilities are required for time synchronisation with ntpd in Alpine
+    cap_add:
+      - SYS_TIME
+      - SYS_NICE
+    expose:
+      - "80"
+    networks:
+      - haproxy
+      - postgres
+      - davical
+
+networks:
+  haproxy:
+    external:
+      name: haproxy
+  postgres:
+    external:
+      name: postgres
+  davical:
+    external:
+      name: davical
