@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  haproxy:
+    container_name: haproxy
+    
+    image: haproxy:alpine
+    
+    ports:
+      - "443:443"
+      - "80:80"
+      
+    volumes:
+      - haproxy:/usr/local/etc/haproxy:rw
+      - haproxytls:/etc/ssl/private:ro
+      
+    networks:
+      - haproxy
+
+volumes:
+  haproxy:
+    external: true
+    
+  haproxytls:
+    externa: true
+
+networks:
+  haproxy:
+    external:
+      name: haproxy
