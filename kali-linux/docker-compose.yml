@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  python:
+    container_name: python
+    
+    build: python
+    
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    
+    environment:
+      - DISPLAY
+      
+    network_mode: "host"
+    privileged: true
+      
+    devices:
+      - /dev/dri:/dev/dri
