@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  maltego:
+    container_name: maltego
+    build: maltego
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY
