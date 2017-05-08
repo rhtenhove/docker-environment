@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  python:
+    container_name: python
+    
+    build: python
+    
+    volumes:
+      #- python:/code
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    
+    environment:
+      - DISPLAY
+      
+    devices:
+      - /dev/dri:/dev/dri
+
+#volumes:
+#  python:
+#    external: true

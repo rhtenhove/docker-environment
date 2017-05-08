@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  flirone:
+    container_name: flirone
+    
+    build: flirone
+    
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    
+    environment:
+      - DISPLAY
+      
+    devices:
+      - /dev/video1:/dev/video1
+      - /dev/video2:/dev/video2
