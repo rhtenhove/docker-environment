@@ -18,7 +18,7 @@ services:
       SHARELATEX_APP_NAME: z-LatexEditor
       SHARELATEX_SITE_URL: $SHARELATEX_SITE_URL
       SHARELATEX_NAV_TITLE: z-LatexEditor
-      SHARELATEX_HEADER_IMAGE_URL: http://somehereimage.png
+      SHARELATEX_HEADER_IMAGE_URL: $SHARELATEX_SITE_URL/background.png
       SHARELATEX_ADMIN_EMAIL: $SHARELATEX_ADMIN_EMAIL
       SHARELATEX_LEFT_FOOTER: '[{"text": "<a href=\"https://www.google.com\">google.com</a> 2017"},{"text": " Hi!"} ]'
       SHARELATEX_RIGHT_FOOTER: '[{"text": "latex-editor"} ]'
