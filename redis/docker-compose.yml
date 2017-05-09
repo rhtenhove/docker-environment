@@ -1,0 +1,21 @@
+version: "3"
+services:
+  redis:
+    restart: unless-stopped
+    image: redis
+    container_name: redis
+    expose:
+      - 6379
+    volumes:
+      - redis:/data
+    networks:
+      - redis
+
+volumes:
+  redis:
+    external: true
+      
+networks:
+  redis:
+    external:
+      name: redis
