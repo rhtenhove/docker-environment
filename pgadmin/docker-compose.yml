@@ -1,0 +1,29 @@
+version: '3'
+services:
+  pgadmin:
+    container_name: pgadmin
+    build:
+      context: ./pgadmin
+      args:
+        public_url: $public_url
+        PGADMIN_SETUP_EMAIL: ${PGADMIN_SETUP_EMAIL}
+        PGADMIN_SETUP_PASSWORD: ${PGADMIN_SETUP_PASSWORD}
+    expose:
+      - "5050"
+    networks:
+      - haproxy
+      - postgres
+    volumes:
+      - pgadmin:/var/lib/pgadmin4:rw
+
+networks:
+  haproxy:
+    external:
+      name: haproxy
+  postgres:
+    external:
+      name: postgres
+
+volumes:
+  pgadmin:
+    external: true
