@@ -1,0 +1,47 @@
+version: "3"
+services:
+  sharelatex:
+    restart: unless-stopped
+    image: sharelatex/sharelatex
+    container_name: sharelatex
+    expose:
+      - 80
+    networks:
+      - mongodb
+      - redis
+      - haproxy
+    volumes:
+      - sharelatex:/var/lib/sharelatex
+    environment:
+      SHARELATEX_MONGO_URL: mongodb://mongodb/sharelatex
+      SHARELATEX_REDIS_HOST: redis
+      SHARELATEX_APP_NAME: z-LatexEditor
+      SHARELATEX_SITE_URL: $SHARELATEX_SITE_URL
+      SHARELATEX_NAV_TITLE: z-LatexEditor
+      SHARELATEX_HEADER_IMAGE_URL: http://somehereimage.png
+      SHARELATEX_ADMIN_EMAIL: $SHARELATEX_ADMIN_EMAIL
+      SHARELATEX_LEFT_FOOTER: '[{"text": "<a href=\"https://www.google.com\">google.com</a> 2017"},{"text": " Hi!"} ]'
+      SHARELATEX_RIGHT_FOOTER: '[{"text": "latex-editor"} ]'
+      SHARELATEX_EMAIL_FROM_ADDRESS: $SHARELATEX_EMAIL_FROM_ADDRESS
+      SHARELATEX_EMAIL_SMTP_HOST: $SHARELATEX_EMAIL_SMTP_HOST
+      SHARELATEX_EMAIL_SMTP_PORT: $SHARELATEX_EMAIL_SMTP_PORT
+      SHARELATEX_EMAIL_SMTP_USER: $SHARELATEX_EMAIL_SMTP_USER
+      SHARELATEX_EMAIL_SMTP_PASS: $SHARELATEX_EMAIL_SMTP_PASS
+      SHARELATEX_EMAIL_SMTP_SECURE: $SHARELATEX_EMAIL_SMTP_SECURE
+      SHARELATEX_EMAIL_SMTP_TLS_REJECT_UNAUTH: $SHARELATEX_EMAIL_SMTP_TLS_REJECT_UNAUTH
+      SHARELATEX_EMAIL_SMTP_IGNORE_TLS: $SHARELATEX_EMAIL_SMTP_IGNORE_TLS
+      
+volumes:
+  sharelatex:
+    external: true
+      
+networks:
+  redis:
+    external:
+      name: redis
+  mongodb:
+    external:
+      name: mongodb
+  haproxy:
+    external:
+      name: haproxy
