@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    expose:
+      - "3306"
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - mariadb
+
+volumes:
+  mariadb:
+    external: true
+
+networks:
+  mariadb:
+    external:
+      name: mariadb
