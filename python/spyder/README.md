@@ -10,10 +10,10 @@ First build the container:
 
 Then add the following line to `.bashrc`:
 
-alias spyderd="xhost +local:spyder && docker run -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix python-spyder && xhost -local:spyder"
+```alias spyderd="xhost +local:spyder && docker run -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix python-spyder && xhost -local:spyder"```
 
 Don't forget to `source .bashrc`.
 
 ### Running directly
 
-Run `startcontainer.sh`, ie.: `./startcontainer.sh`.
+Just run `./startcontainer.sh`.
