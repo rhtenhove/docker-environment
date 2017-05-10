@@ -1,0 +1,12 @@
+version: '3'
+services:
+  brackets:
+    container_name: brackets
+    build: brackets
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - DISPLAY
+    devices:
+      - /dev/dri
