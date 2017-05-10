@@ -5,5 +5,8 @@ services:
     build: spyder
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - spyder:/root
     environment:
       - DISPLAY
+    devices:
+      - /dev/dri
