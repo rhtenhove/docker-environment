@@ -8,10 +8,9 @@ python3 python3-pip
 
 RUN pip3 install spyder PyQt5
 
-# Add or remove packages here that you (may) need
-RUN apt-get update && apt-get install -y chromium-browser python3-lxml
-
-RUN pip3 install Scrapy oauth2client
+# Add or remove packages here that you (may) need, for example
+# RUN apt-get update && apt-get install -y chromium-browser python3-lxml
+# RUN pip3 install Scrapy flask
 
 # Use --new-instance because the persisted ~/.config/spyder3-py3/spyder.lock file isn't removed when closing the container
 CMD ["spyder3", "--new-instance"]
