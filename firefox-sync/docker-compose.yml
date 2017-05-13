@@ -12,6 +12,7 @@ services:
         force_wsgi_environ: $force_wsgi_environ
     expose:
       - "5000"
+    networks:
       - haproxy
       - postgres
 
