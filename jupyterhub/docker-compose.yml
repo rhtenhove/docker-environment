@@ -1,0 +1,21 @@
+version: "3"
+services:
+  jupyterhub:
+    restart: unless-stopped
+    image: jupyterhub
+    container_name: jupyterhub
+    expose:
+      - 8000
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - jupyterhub
+      
+volumes:
+  jupyterhub:
+    external: true
+      
+networks:
+  jupyterhub:
+    external:
+      name: jupyterhub
