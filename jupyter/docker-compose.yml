@@ -2,25 +2,21 @@ version: "3"
 services:
   jupyter:
     restart: unless-stopped
-    build: 
+    build:
       context: jupyter
-      args:
-        - PASSWORDHASH=$PASSWORDHASH
     container_name: jupyter
     expose:
-      - 8000
+      - 8888
     volumes:
       - jupyter:/jupyter
     networks:
-      - jupyter
-    environment:
-      DOCKER_NOTEBOOK_DIR: $DOCKER_NOTEBOOK_DIR
-      
+      - haproxy
+
 volumes:
   jupyter:
     external: true
-      
+
 networks:
-  jupyter:
+  haproxy:
     external:
-      name: jupyter
+      name: haproxy
