@@ -8,7 +8,8 @@ services:
     expose:
       - 8888
     volumes:
-      - jupyter:/jupyter
+      - jupyter:/home/jupyter/notebooks
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - haproxy
 
