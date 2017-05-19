@@ -1,0 +1,23 @@
+version: '3'
+services:
+  hugo:
+    container_name: hugo
+    build:
+      context: hugo
+      args:
+        BASEURL: $BASEURL
+    expose:
+      - "80"
+    volumes:
+      - hugo:/site
+    networks:
+      - haproxy
+
+volumes:
+  hugo:
+    external: true
+
+networks:
+  haproxy:
+    external:
+      name: haproxy
