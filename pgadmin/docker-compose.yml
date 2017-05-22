@@ -14,7 +14,8 @@ services:
       - haproxy
       - postgres
     volumes:
-      - pgadmin:/var/lib/pgadmin4:rw
+      - pgadmin:/var/lib/pgadmin4
+      - /etc/localtime:/etc/localtime:ro
 
 networks:
   haproxy:

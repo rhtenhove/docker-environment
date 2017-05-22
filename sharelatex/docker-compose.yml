@@ -12,6 +12,7 @@ services:
       - haproxy
     volumes:
       - sharelatex:/var/lib/sharelatex
+      - /etc/localtime:/etc/localtime:ro
     environment:
       SHARELATEX_MONGO_URL: mongodb://mongodb/sharelatex
       SHARELATEX_REDIS_HOST: redis

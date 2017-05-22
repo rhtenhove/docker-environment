@@ -1,9 +1,7 @@
 version: '3'
-
 services:
   davical:
     container_name: davical
-    
     build:
       context: ./davical
       args:
@@ -16,30 +14,28 @@ services:
         domainname: $domainname
         locale: $locale
         TIMEZONE: $TIMEZONE
-        
     # These capabilities are required for time synchronisation with ntpd
     cap_add:
       - SYS_TIME
       - SYS_NICE
-      
     expose:
       - "80"
-      
     networks:
       - davical
       - haproxy
       - postgres
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
 
 networks:
 # This network is used to connect Ca*DAV clients directly
   davical:
     external:
       name: davical
-      
   haproxy:
     external:
       name: haproxy
-      
   postgres:
     external:
       name: postgres

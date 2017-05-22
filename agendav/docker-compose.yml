@@ -22,6 +22,8 @@ services:
       - haproxy
       - postgres
       - davical
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
 
 networks:
   haproxy:

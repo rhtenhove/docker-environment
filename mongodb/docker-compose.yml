@@ -8,6 +8,7 @@ services:
       - 27017
     volumes:
       - mongodb:/data/db
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - mongodb
       
