@@ -1,0 +1,7 @@
+version: '3'
+services:
+  cyrus:
+    container_name: cyrus
+    build: cyrus
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
