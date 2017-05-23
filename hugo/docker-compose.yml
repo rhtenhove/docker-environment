@@ -4,14 +4,14 @@ services:
     container_name: hugo
     build:
       context: hugo
-      args:
-        BASEURL: $BASEURL
     expose:
       - "80"
     volumes:
       - hugo:/site
     networks:
       - haproxy
+    environment:
+      BASEURL: $BASEURL
 
 volumes:
   hugo:
