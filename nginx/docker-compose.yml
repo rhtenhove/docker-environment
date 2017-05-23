@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    images: nginx:alpine
+    expose:
+      - "80"
+    volumes:
+      - nginx:/site
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - haproxy
+
+volumes:
+  nginx:
+    external: true
+
+networks:
+  haproxy:
+    external:
+      name: haproxy
