@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mosquitto:
+    container_name: mosquitto
+    images: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - mosquitto: /mosquitto
+      - /etc/localtime:/etc/localtime:ro
+
+volumes:
+  nginx:
+    external: true
