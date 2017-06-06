@@ -58,6 +58,7 @@ docker run --rm -e FQDN -v letsencrypt:/etc/letsencrypt ubuntu:xenial bash -c "m
 ### The Easy Way
 
 Just getting an RSA key + certificate.
+> Make sure the FQDN actually points towards your haproxy instance
 ```
 docker run --rm -e FQDN -e CERTBOTIP -e EMAIL \
 -v letsencrypt:/etc/letsencrypt \
