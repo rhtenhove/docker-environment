@@ -7,5 +7,9 @@ services:
       context: kali-linux
     volumes:
       - kali-linux:/home/root
-    ports:
-      - "22:22"
+    expose:
+      - "22"
+      
+volumes:
+  kali-linux:
+    external: true
