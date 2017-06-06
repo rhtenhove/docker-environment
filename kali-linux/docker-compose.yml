@@ -1,19 +1,11 @@
 version: '3'
 
 services:
-  python:
-    container_name: python
-    
-    build: python
-    
+  kali-linux:
+    container_name: kali-linux
+    build:
+      context: kali-linux
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    
-    environment:
-      - DISPLAY
-      
-    network_mode: "host"
-    privileged: true
-      
-    devices:
-      - /dev/dri:/dev/dri
+      - kali-linux:/home/root
+    ports:
+      - "22:22"
