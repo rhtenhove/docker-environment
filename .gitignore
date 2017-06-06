@@ -1,3 +1,5 @@
 *.env
 
 *DockerfileAlt
+
+*docker-compose-alt.yml
