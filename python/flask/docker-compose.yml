@@ -8,6 +8,11 @@ services:
       - ./flask/code/:/code
     networks:
       - haproxy
+    expose:
+      - "5000"
+    environment:
+      FLASK_APP: /code/main.py
+     # FLASK_DEBUG: 1
 
 networks:
   haproxy:
