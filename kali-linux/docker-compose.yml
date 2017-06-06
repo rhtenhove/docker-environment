@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   kali-linux:
     container_name: kali-linux
@@ -7,6 +6,7 @@ services:
       context: kali-linux
     volumes:
       - kali-linux:/home/root
+      - /etc/localtime:/etc/localtime:ro 
     expose:
       - "22"
       
