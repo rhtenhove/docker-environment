@@ -9,6 +9,6 @@ go get -v github.com/spf13/hugo && \
 
 apk del go git build-base
 
-ARG BASEURL
+ENTRYPOINT hugo
 
-CMD ["hugo", "--baseURL=$BASEURL", "--bind=*"]
+CMD ["--baseURL=$BASEURL", "--port=80", "--appendPort=false", "--bind=*"]
