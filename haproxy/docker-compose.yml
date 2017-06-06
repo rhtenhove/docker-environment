@@ -7,8 +7,8 @@ services:
       - "443:443"
       - "80:80"
     volumes:
-      - haproxy:/usr/local/etc/haproxy:rw
-      - haproxytls:/etc/ssl/private:ro
+      - haproxy:/usr/local/etc/haproxy
+      - letsencrypt:/etc/letsencrypt:ro
       - /etc/localtime:/etc/localtime:ro
     networks:
       - haproxy
@@ -16,8 +16,8 @@ services:
 volumes:
   haproxy:
     external: true
-  haproxytls:
-    externa: true
+  letsencrypt:
+    external: true
 
 networks:
   haproxy:
