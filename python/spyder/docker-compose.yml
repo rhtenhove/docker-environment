@@ -11,3 +11,7 @@ services:
       - DISPLAY
     devices:
       - /dev/dri
+      
+volumes:
+  spyder:
+    external: true
