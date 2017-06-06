@@ -5,7 +5,7 @@ services:
     build: flask
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./flask/code/:/code
+      - ./flask/code/:/code:ro
     networks:
       - haproxy
     expose:
