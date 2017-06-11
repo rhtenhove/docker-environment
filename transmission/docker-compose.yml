@@ -1,0 +1,17 @@
+version: "3"
+services:
+  transmission:
+    restart: unless-stopped
+    build: transmission
+    container_name: transmission
+    ports:
+      - 9091
+    volumes:
+      - /torrent:/torrent
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      TRANSMISSION_BIND_ADDRESS_IPV4: 0.0.0.0
+      TRANSMISSION_BIND_ADDRESS_IPV6: ::
+      TRANSMISSION_DOWNLOAD_DIR: /torrent
+      TRANSMISSION_ENCRYPTION: 1
+      TRANSMISSION_UPLOAD_LIMIT: 200
