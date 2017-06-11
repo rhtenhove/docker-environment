@@ -5,7 +5,7 @@ services:
     build: transmission
     container_name: transmission
     ports:
-      - 9091
+      - "9091:9091"
     volumes:
       - /torrent:/torrent
       - /etc/localtime:/etc/localtime:ro
