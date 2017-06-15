@@ -7,6 +7,7 @@ services:
       - "8086"
     volumes:
       - influxdb:/var/lib/influxdb
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - influxdb
 
