@@ -1,0 +1,16 @@
+version: '3'
+services:
+  telegraf:
+    container_name: telegraf
+    build: telegraf
+    expose:
+      - "8086"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - influxdb
+
+networks:
+  influxdb:
+    external:
+      name: influxdb

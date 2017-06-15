@@ -3,3 +3,5 @@
 *DockerfileAlt
 
 *docker-compose-alt.yml
+
+telegraf/telegraf/telegraf\.conf
