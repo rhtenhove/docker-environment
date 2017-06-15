@@ -1,0 +1,20 @@
+version: '3'
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb:alpine
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb:/var/lib/influxdb
+    networks:
+      - influxdb
+
+volumes:
+  influxdb:
+    external: true
+
+networks:
+  influxdb:
+    external:
+      name: influxdb
