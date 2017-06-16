@@ -2,7 +2,7 @@ version: '3'
 services:
   grafana:
     container_name: grafana
-    build: grafana
+    image: grafana/grafana
     expose:
       - "3000"
     volumes:
