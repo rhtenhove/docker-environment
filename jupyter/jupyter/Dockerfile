@@ -1,5 +1,4 @@
-FROM alpine:latest
-MAINTAINER Ruben ten Hove <git@rhtenhove.nl>
+FROM alpine
 
 RUN apk --no-cache --update add python3 py3-pip build-base python3-dev \
 libstdc++ && \

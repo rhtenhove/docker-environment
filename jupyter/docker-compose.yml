@@ -13,8 +13,24 @@ services:
     networks:
       - haproxy
 
+    jupyter-remotekernel:
+      restart: unless-stopped
+      build:
+        context: jupyter
+        dockerfile: Dockerfile-remotekernel
+      container_name: jupyter-remotekernel
+      expose:
+        - 8888
+      volumes:
+        - jupyter-remotekernel:/home/jupyter/notebooks
+        - /etc/localtime:/etc/localtime:ro
+      networks:
+        - haproxy
+
 volumes:
   jupyter:
+    external: true
+  jupyter-remotekernel:
     external: true
 
 networks:
