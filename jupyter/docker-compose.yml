@@ -19,10 +19,10 @@ services:
     restart: unless-stopped
     build:
       context: jupyter
-      dockerfile: Dockerfile-KG
+      dockerfile: Dockerfile-kg
       args:
         KG_PERSONAL_PIP_PACKAGES: $KG_PERSONAL_PIP_PACKAGES
-    container_name: jupyter-KG
+    container_name: jupyter-kg
     expose:
       - 8888
     volumes:
