@@ -5,7 +5,7 @@ services:
     build:
       context: jupyter
       args:
-        - PERSONAL_PIP_PACKAGES: $PERSONAL_PIP_PACKAGES
+        PERSONAL_PIP_PACKAGES: $PERSONAL_PIP_PACKAGES
     container_name: jupyter
     expose:
       - 8888
@@ -21,7 +21,7 @@ services:
       context: jupyter
       dockerfile: Dockerfile-KG
       args:
-        - KG_PERSONAL_PIP_PACKAGES: $KG_PERSONAL_PIP_PACKAGES
+        KG_PERSONAL_PIP_PACKAGES: $KG_PERSONAL_PIP_PACKAGES
     container_name: jupyter-KG
     expose:
       - 8888
@@ -30,7 +30,7 @@ services:
     networks:
       - haproxy
     environment:
-      - KG_AUTH_TOKEN: $KG_AUTH_TOKEN
+      KG_AUTH_TOKEN: $KG_AUTH_TOKEN
 
 volumes:
   jupyter:
