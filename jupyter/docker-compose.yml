@@ -26,6 +26,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     networks:
       - haproxy
+    environment:
+      - KG_AUTH_TOKEN: $KG_AUTH_TOKEN
 
 volumes:
   jupyter:
