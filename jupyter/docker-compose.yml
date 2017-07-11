@@ -15,7 +15,7 @@ services:
     networks:
       - haproxy
 
-  jupyter-KG:
+  jupyter-kg:
     restart: unless-stopped
     build:
       context: jupyter
