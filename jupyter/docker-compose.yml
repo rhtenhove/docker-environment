@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     build:
       context: jupyter
+      args:
+        - PERSONAL_PIP_PACKAGES: $PERSONAL_PIP_PACKAGES
     container_name: jupyter
     expose:
       - 8888
@@ -13,16 +15,17 @@ services:
     networks:
       - haproxy
 
-  jupyter-remotekernel:
+  jupyter-KG:
     restart: unless-stopped
     build:
       context: jupyter
-      dockerfile: Dockerfile-remotekernel
-    container_name: jupyter-remotekernel
+      dockerfile: Dockerfile-KG
+      args:
+        - KG_PERSONAL_PIP_PACKAGES: $KG_PERSONAL_PIP_PACKAGES
+    container_name: jupyter-KG
     expose:
       - 8888
     volumes:
-      - jupyter-remotekernel:/home/jupyter/notebooks
       - /etc/localtime:/etc/localtime:ro
     networks:
       - haproxy
@@ -31,8 +34,6 @@ services:
 
 volumes:
   jupyter:
-    external: true
-  jupyter-remotekernel:
     external: true
 
 networks:

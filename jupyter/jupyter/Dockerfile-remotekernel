@@ -1,9 +1,11 @@
 FROM alpine
 
+ARG KG_PERSONAL_PIP_PACKAGES
+
 RUN apk --no-cache --update add python3 py3-pip build-base python3-dev \
 libstdc++ && \
 pip3 install --upgrade pip && \
-pip3 install --upgrade jupyter jupyter_kernel_gateway && \
+pip3 install --upgrade jupyter jupyter_kernel_gateway $KG_PERSONAL_PIP_PACKAGES && \
 
 apk del python3-dev build-base && \
 
@@ -11,8 +13,6 @@ adduser -u 1000 -D jupyter
 
 USER jupyter
 
-#RUN mkdir /home/jupyter/notebooks
+ADD jupyter_kernel_gateway_config.py /home/jupyter/.jupyter/jupyter_kernel_gateway_config.py
 
-#ADD jupyter_notebook_config.py /home/jupyter/.jupyter/jupyter_notebook_config.py
-
-CMD ["jupyter", "kernelgateway", "--KernelGatewayApp.ip=0.0.0.0"]
+CMD ["jupyter", "kernelgateway"]
