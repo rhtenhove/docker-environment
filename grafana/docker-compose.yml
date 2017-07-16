@@ -2,7 +2,7 @@ version: '3'
 services:
   grafana:
     container_name: grafana
-    reboot: unless-stopped
+    restart: unless-stopped
     image: grafana/grafana
     expose:
       - "3000"

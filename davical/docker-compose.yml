@@ -2,7 +2,7 @@ version: '3'
 services:
   davical:
     container_name: davical
-    reboot: unless-stopped
+    restart: unless-stopped
     build:
       context: ./davical
       args:
