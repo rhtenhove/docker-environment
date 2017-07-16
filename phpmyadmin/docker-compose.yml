@@ -2,6 +2,7 @@ version: '3'
 services:
   phpmyadmin:
     container_name: phpmyadmin
+    reboot: unless-stopped
     image: phpmyadmin/phpmyadmin:
     expose:
       - "80"

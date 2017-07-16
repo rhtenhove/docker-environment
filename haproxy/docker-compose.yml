@@ -2,6 +2,7 @@ version: '3'
 services:
   haproxy:
     container_name: haproxy
+    reboot: unless-stopped
     image: haproxy:alpine
     ports:
       - "443:443"

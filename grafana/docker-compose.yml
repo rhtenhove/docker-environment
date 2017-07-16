@@ -2,6 +2,7 @@ version: '3'
 services:
   grafana:
     container_name: grafana
+    reboot: unless-stopped
     image: grafana/grafana
     expose:
       - "3000"
@@ -14,7 +15,7 @@ services:
       GF_AUTH_ANONYMOUS_ENABLED: $GF_AUTH_ANONYMOUS_ENABLED
     networks:
       - influxdb
-      
+
 volumes:
   grafana:
     external: true

@@ -2,6 +2,7 @@ version: '3'
 services:
   mariadb:
     container_name: mariadb
+    reboot: unless-stopped
     image: mariadb
     expose:
       - "3306"

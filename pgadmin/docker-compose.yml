@@ -2,6 +2,7 @@ version: '3'
 services:
   pgadmin:
     container_name: pgadmin
+    reboot: unless-stopped
     build:
       context: ./pgadmin
       args:

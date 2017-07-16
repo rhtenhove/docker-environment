@@ -2,6 +2,7 @@ version: '3'
 services:
   influxdb:
     container_name: influxdb
+    reboot: unless-stopped
     image: influxdb:alpine
     expose:
       - "8086"
