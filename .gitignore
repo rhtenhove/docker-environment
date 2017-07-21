@@ -5,3 +5,7 @@
 *docker-compose-alt.yml
 
 telegraf/telegraf/telegraf\.conf
+
+certbot/domains\.txt
+
+certbot/email\.txt
