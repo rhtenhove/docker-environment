@@ -1,0 +1,18 @@
+version: '3'
+services:
+  arangodb:
+    container_name: arangodb
+    image: arangodb
+    volumes:
+      - arangodb:/var/lib/arangodb3
+    expose:
+      - "8529"
+    environment:
+      - ARANGO_NO_AUTH=$ARANGO_NO_AUTH
+    networks:
+      - "arangodb"
+
+networks:
+  arangodb:
+    external:
+      name: arangodb
