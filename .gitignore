@@ -1,8 +1,8 @@
 *.env
 
-*DockerfileAlt
+*Dockerfile-*
 
-*docker-compose-alt.yml
+*docker-compose-*.yml
 
 telegraf/telegraf/telegraf\.conf
 
