@@ -2,6 +2,7 @@ version: '3'
 services:
   arangodb:
     container_name: arangodb
+    restart: unless-stopped
     image: arangodb
     volumes:
       - arangodb:/var/lib/arangodb3
