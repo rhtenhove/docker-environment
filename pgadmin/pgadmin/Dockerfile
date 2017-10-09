@@ -3,8 +3,8 @@ MAINTAINER Ruben ten Hove <git@rhtenhove.nl>
 
 RUN apk add --update --no-cache postgresql-dev postgresql-libs build-base apache2 apache2-utils apache2-mod-wsgi
 
-ARG PGADMIN_VERSION_MAJOR=1
-ARG PGADMIN_VERSION_MINOR=4
+ARG PGADMIN_VERSION_MAJOR
+ARG PGADMIN_VERSION_MINOR
 
 RUN echo "https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}/pip/pgadmin4-${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}-py2.py3-none-any.whl" > requirements.txt \
 && pip install --upgrade pip \
@@ -24,9 +24,6 @@ ADD pgadmin.conf /etc/apache2/conf.d/pgadmin.conf
 
 ARG PGADMIN_SETUP_EMAIL
 ARG PGADMIN_SETUP_PASSWORD
-
-#ENV PGADMIN_SETUP_EMAIL $PGADMIN_SETUP_EMAIL
-#ENV PGADMIN_SETUP_PASSWORD $PGADMIN_SETUP_PASSWORD
 
 # Create configuration database
 RUN python /usr/local/lib/python3.6/site-packages/pgadmin4/setup.py
