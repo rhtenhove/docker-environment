@@ -6,7 +6,6 @@ services:
     build:
       context: ./pgadmin
       args:
-        public_url: $public_url
         PGADMIN_SETUP_EMAIL: ${PGADMIN_SETUP_EMAIL}
         PGADMIN_SETUP_PASSWORD: ${PGADMIN_SETUP_PASSWORD}
         PGADMIN_VERSION_MAJOR: 1
