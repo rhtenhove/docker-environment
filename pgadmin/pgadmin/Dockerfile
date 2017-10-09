@@ -6,10 +6,8 @@ ARG PGADMIN_SETUP_EMAIL
 ARG PGADMIN_SETUP_PASSWORD
 
 RUN apk add --update --no-cache postgresql-dev postgresql-libs build-base python3 python3-dev && \
-
 echo "https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}/pip/pgadmin4-${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}-py2.py3-none-any.whl" > requirements.txt \
 && pip3 install -r requirements.txt && \
-
 apk del musl-dev build-base
 
 RUN mkdir -p /var/log/pgadmin4 /var/lib/pgadmin4/sessions /var/lib/pgadmin4/storage
