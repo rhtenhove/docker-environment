@@ -26,4 +26,4 @@ EXPOSE 5050
 
 VOLUME /var/lib/pgadmin4
 
-CMD ["python3", "/usr/local/lib/python3.6/site-packages/pgadmin4/pgAdmin4.py"]
+CMD ["python3", "/usr/lib/python3.6/site-packages/pgadmin4/pgAdmin4.py"]
