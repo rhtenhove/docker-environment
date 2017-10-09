@@ -1,13 +1,16 @@
 FROM alpine
 
-RUN apk add --update --no-cache postgresql-dev postgresql-libs build-base python3
-
 ARG PGADMIN_VERSION_MAJOR
 ARG PGADMIN_VERSION_MINOR
+ARG PGADMIN_SETUP_EMAIL
+ARG PGADMIN_SETUP_PASSWORD
 
-RUN echo "https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}/pip/pgadmin4-${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}-py2.py3-none-any.whl" > requirements.txt \
-&& pip3 install --upgrade pip \
-&& pip3 install -r requirements.txt
+RUN apk add --update --no-cache postgresql-dev postgresql-libs build-base python3 python3-dev && \
+
+echo "https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}/pip/pgadmin4-${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}-py2.py3-none-any.whl" > requirements.txt \
+&& pip3 install -r requirements.txt && \
+
+apk del musl-dev build-base
 
 RUN mkdir -p /var/log/pgadmin4 /var/lib/pgadmin4/sessions /var/lib/pgadmin4/storage
 
@@ -19,14 +22,7 @@ SESSION_DB_PATH = '/var/lib/pgadmin4/sessions'\n\
 STORAGE_DIR = '/var/lib/pgadmin4/storage'" \
 >> /usr/lib/python3.6/site-packages/pgadmin4/config_local.py
 
-ARG PGADMIN_SETUP_EMAIL
-ARG PGADMIN_SETUP_PASSWORD
-
-# Create configuration database
 RUN python3 /usr/lib/python3.6/site-packages/pgadmin4/setup.py
-
-# Clean up
-RUN apk del musl-dev build-base
 
 EXPOSE 5050
 
