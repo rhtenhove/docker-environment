@@ -1,16 +1,14 @@
-FROM alpine:latest
-MAINTAINER Ruben ten Hove <git@rhtenhove.nl>
-
-RUN apk --update --no-cache add apache2 git \
-# php7 doesnt work (yet) with the awl libraries required for davical
-php5 php5-pgsql php5-imap php5-curl php5-cgi php5-xml php5-apache2 php5-gettext php5-pdo_pgsql php5-iconv php5-calendar \
-tzdata openntpd \
-perl-yaml perl-dbi perl-dbd-pg
+FROM alpine
 
 WORKDIR /usr/share
 
-RUN git clone https://gitlab.com/davical-project/davical.git && \
-git clone https://gitlab.com/davical-project/awl.git
+RUN apk --update --no-cache add apache2 git \
+php7 php7-pgsql php7-imap php7-curl php7-cgi php7-xml php7-apache2 php7-gettext php7-pdo_pgsql php7-iconv php7-calendar \
+tzdata openntpd \
+perl-yaml perl-dbi perl-dbd-pg && \
+git clone https://gitlab.com/davical-project/davical.git && \
+git clone https://gitlab.com/davical-project/awl.git && \
+apk del git
 
 ARG dbhost
 ARG dbname
@@ -40,8 +38,8 @@ ARG TIMEZONE
 
 RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
 echo $TIMEZONE > /etc/timezone && \
-sed -i "s|date.timezone = UTC|date.timezone = $TIMEZONE|g" /etc/php5/php.ini && \
-sed -i "s|max_execution_time = 30|max_execution_time = 120|g" /etc/php5/php.ini
+sed -i "s|date.timezone = UTC|date.timezone = $TIMEZONE|g" /etc/php7/php.ini && \
+sed -i "s|max_execution_time = 30|max_execution_time = 120|g" /etc/php7/php.ini
 
 # Add apache virtualhost conf
 ADD ./davical.conf /etc/apache2/conf.d/davical.conf
@@ -60,9 +58,6 @@ httpd -DFOREGROUND" >> /usr/local/bin/startup.sh
 RUN chown -R root:apache /usr/share/ && \
 chown root:apache /etc/davical/config.php && \
 chmod 700 /usr/local/bin/startup.sh
-
-# clean up unused packages after build
-RUN apk del git
 
 EXPOSE 80
 
